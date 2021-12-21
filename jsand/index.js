@@ -168,14 +168,19 @@ export default class JSand {
 	}
 
 	update() {
-		this.field.applyChanges();
 		for(let y = 0; y < this.height; y++) {
 			for(let x = 0; x < this.width; x++) {
 				const v = this.field.get(x,y);
+				if(v.isAir) continue;
+				if(!v.particle.cell) {
+					throw new Error('Unlinked cell found!');
+					return -1;
+				}
 				const p = v.getParticle();
 				p.update();
 			}
 		}
+		this.field.applyChanges();
 	}
 
 	draw() {

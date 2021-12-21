@@ -9,10 +9,9 @@
 		JSand.createOnLoad('#jsand').then(jsand => {
 			window.jsand = jsand;
 		});
+		window.onerror = alert;
 	</script>
 	<link rel="stylesheet" href="./jsand/style.css">
-
-
 	<style>
 		html, body {
 			width: 100%;
@@ -27,8 +26,6 @@
 		}
 		#simple-translate { position: fixed !important; }
 	</style>
-
-
 </head>
 <body>
 	<div id="jsand"></div>

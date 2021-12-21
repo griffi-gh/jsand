@@ -44,3 +44,28 @@ particleTypes.sand = class SandParticle extends Particle {
 	static get fColor() { return [200,200,100]; }
 	static get uColor() { return [200,200,100]; }
 }
+
+particleTypes.water = class SandParticle extends Particle {
+	update() {
+		const below = this.cell.field.get(this.cell.positionX, this.cell.positionY + 1);
+		if(below && below.isAir) {
+			this.cell.nextState = 'clear';
+			below.nextState = this;
+		} else {
+			const left = this.cell.field.get(this.cell.positionX - 1, this.cell.positionY);
+			if(left && left.isAir) {
+				this.cell.nextState = 'clear';
+				left.nextState = this;
+			} else {
+				const right = this.cell.field.get(this.cell.positionX + 1, this.cell.positionY);
+				if(right && right.isAir) {
+					this.cell.nextState = 'clear';
+					right.nextState = this;
+				}
+			}
+		}
+	}
+	static get name() { return 'WATR'; }
+	static get fColor() { return [100,100,255]; }
+	static get uColor() { return [100,100,255]; }
+}
