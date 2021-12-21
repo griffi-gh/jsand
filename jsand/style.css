@@ -1,0 +1,15 @@
+.particle-type {
+	display: inline-block;
+	font-family: Monospace;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	width: 5ch;
+	display: inline-block;
+	text-align: center;
+	border: 2px solid #ff000000;
+	background-clip: padding-box;
+	cursor: default
+}
+.particle-type.selected-particle-type {
+	border-color: red;
+}
